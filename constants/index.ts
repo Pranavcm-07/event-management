@@ -25,3 +25,16 @@ export const headerLinks = [
     isFree: false,
     url: '',
   }
+
+  export const registerDefaultValues = {
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    imageUrl: '',
+  }
+  export const loginDefaultValues = {
+    email: '',
+    password: '',
+  }

@@ -1,4 +1,4 @@
-import React, { startTransition, useState } from 'react'
+import React, { startTransition, useEffect, useState } from 'react'
 import {
     Select,
     SelectContent,
@@ -6,7 +6,7 @@ import {
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select"
-import { ICategory } from '@/lib/database/models/category.model';
+import Category, { ICategory } from '@/lib/database/models/category.model';
 import {
     AlertDialog,
     AlertDialogAction,
@@ -19,6 +19,9 @@ import {
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
 import { Input } from '../ui/input';
+import { createCategory, fetchCategory } from '@/lib/actions/category.actions';
+import { handleError } from '@/lib/utils';
+import { get } from 'http';
   
   
 
@@ -30,9 +33,24 @@ type DropdownProps = {
 const Dropdown = ({value,onChangeHandler}:DropdownProps) => {
     const [categories,setCategories] = useState<ICategory[]>([])
     const [newCategory,setNewCategory] = useState<string>('')
-    const handleAddCategory = ()=>{
-        
-    }
+    const handleAddCategory = () => {
+        createCategory({
+          categoryName: newCategory.trim()
+        })
+          .then((category) => {
+            setCategories((prevState) => [...prevState, category])
+          })
+      }
+    
+      useEffect(() => {
+        const getCategories = async () => {
+          const categoryList = await fetchCategory();
+    
+          categoryList && setCategories(categoryList as ICategory[])
+        }
+    
+        getCategories();
+      }, [])
   return (
     <Select onValueChange={onChangeHandler} defaultValue={value}>
         <SelectTrigger className="select-field">
@@ -43,7 +61,7 @@ const Dropdown = ({value,onChangeHandler}:DropdownProps) => {
                 <SelectItem key={category._id} value={category._id} className='select-item p-regular-14'>{category.name}</SelectItem>
             ))}
             <AlertDialog>
-                <AlertDialogTrigger className='w-full flex p-medium-14 rounded-sm py-3 pl-8 text-primary-500 hover:bg-primary-50 focus:text-primary-500'>Open</AlertDialogTrigger>
+                <AlertDialogTrigger className='w-full flex p-medium-14 rounded-sm py-3 pl-8 text-primary-500 hover:bg-primary-50 focus:text-primary-500'>Add New Category</AlertDialogTrigger>
                 <AlertDialogContent className="bg-white">
                     <AlertDialogHeader>
                         <AlertDialogTitle>New Category</AlertDialogTitle>
