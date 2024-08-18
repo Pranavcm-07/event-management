@@ -9,7 +9,7 @@ import Event from '@/lib/database/models/event.model'
 import { handleError } from '@/lib/utils'
 
 import { CreateUserParams, GetUserParams, UpdateUserParams } from '@/types'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
   export async function createUser({user}: CreateUserParams) {
     try {
@@ -21,7 +21,7 @@ import bcrypt from 'bcrypt'
       //   }
       // }
 
-      const hashedPassword = user.provider==='google' ? undefined : await bcrypt.hash(user.password, 10)
+      const hashedPassword = user.provider==='google' ? undefined : await bcrypt.hash(user.password!, 10)
       const newUser = await User.create({
         username: user.username,
         email: user.email,
