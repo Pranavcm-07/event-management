@@ -1,3 +1,4 @@
+'use client'
 import {
     Sheet,
     SheetContent,
@@ -9,9 +10,12 @@ import {
 import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
 import NavItems from "./NavItems"
+import { signIn, signOut, useSession } from "next-auth/react"
+import AuthButton from "./AuthButton"
 
   
 const MobileNav = () => {
+  const { status } = useSession()
   return (
     <nav className="md:hidden">
         <Sheet>
@@ -22,6 +26,11 @@ const MobileNav = () => {
                 <Image src="/assets/images/logo.svg" alt="Evently logo" width={128} height={38} />
                 <Separator />
                 <NavItems />
+                {status === 'authenticated' ? (
+                  <AuthButton styles='md:hidden' auth='Sign Out' onclick={()=>signOut()}/>
+                ) : (
+                  <AuthButton styles='md:hidden' auth='Sign In' onclick={()=>signIn()}/>
+                )}
             </SheetContent>
         </Sheet>
     </nav>

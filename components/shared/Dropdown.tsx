@@ -40,7 +40,7 @@ const Dropdown = ({value,onChangeHandler}:DropdownProps) => {
           .then((category) => {
             setCategories((prevState) => [...prevState, category])
           })
-      }
+    }
     
       useEffect(() => {
         const getCategories = async () => {

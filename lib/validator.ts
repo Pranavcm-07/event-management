@@ -19,7 +19,7 @@ export const eventFormSchema = z.object({
       .min(3, "First name must be at least 3 characters long")
       .max(30, "First name must be at most 30 characters long"),
     lastname: z.string()
-      .min(3, "Last name must be at least 3 characters long")
+      .min(1, "Last name must be at least 1 characters long")
       .max(30, "Last name must be at most 30 characters long"),
     email: z.string().email(),
     password: z.string()

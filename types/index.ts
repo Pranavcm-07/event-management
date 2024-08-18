@@ -1,12 +1,28 @@
 // ====== USER PARAMS
 export type CreateUserParams = {
-    clerkId: string
-    firstName: string
-    lastName: string
-    username: string
-    email: string
-    photo: string
-  }
+  user: {
+    username: string;
+    password?: string; 
+    email: string;
+    image?: string; 
+    provider: 'google' | 'credentials'; 
+}}
+
+export type GetUserParams = {
+  email: string;
+  provider?: string;
+  password?: string; 
+}
+
+export type User = {
+  id: string;
+  username: string;
+  email: string;
+  password?: string;
+  image?: string;
+  provider: 'google' | 'credentials';
+};
+
   
   export type UpdateUserParams = {
     firstName: string
@@ -147,3 +163,4 @@ export type CreateUserParams = {
     params: { id: string }
     searchParams: { [key: string]: string | string[] | undefined }
   }
+
