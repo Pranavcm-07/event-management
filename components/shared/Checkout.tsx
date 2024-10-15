@@ -57,7 +57,7 @@ const Checkout = ({ event, userId }: CheckoutProps) => {
                 amount: orderDetails.amount,
                 currency: orderDetails.currency,
                 order_id: orderDetails.id, 
-                handler: function (response) {
+                handler: function () {
                     console.log("Payment successful");
                     router.replace('/profile')
                 },
