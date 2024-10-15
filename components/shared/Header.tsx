@@ -14,12 +14,7 @@ const Header = () => {
             <div className="wrapper flex justify-between items-center">
                 {/* Logo link */}
                 <Link href='/' className='w-36'>
-                    <Image 
-                        src="/assets/images/logo.svg" 
-                        alt="Evently logo" 
-                        width={128} 
-                        height={38} 
-                    />
+                    <p className="h5-bold">NexEvent</p>
                 </Link>
                 {/* Desktop navigation */}
                 <nav className='hidden md:flex w-full max-w-xs'>
@@ -33,7 +28,7 @@ const Header = () => {
                             {session.user?.image && (
                                 <Image 
                                     src={session.user.image} 
-                                    alt="Profile Picture" 
+                                    alt="pfp" 
                                     width={32} 
                                     height={32} 
                                     className="rounded-full"

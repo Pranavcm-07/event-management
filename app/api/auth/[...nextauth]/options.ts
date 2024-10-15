@@ -22,7 +22,6 @@ export const options: NextAuthOptions = {
 
                 // Get the user by email
                 const existingUser = await getUserByEmailAndProvider({ email: credentials.email , provider: 'credentials' });
-
                 if (existingUser) {
                     // Case: User exists and the provider is "credentials"
                     const isMatch = await bcrypt.compare(credentials.password, existingUser.password);
@@ -43,7 +42,6 @@ export const options: NextAuthOptions = {
                             provider: 'credentials',
                         }
                     });
-
                     if (newUser && !newUser.error) {
                         // console.log('Signup successful:', newUser._id); 
                         return { ...newUser, id: newUser._id.toString(),name:newUser.username }; // Successful signup

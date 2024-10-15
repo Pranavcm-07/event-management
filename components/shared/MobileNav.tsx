@@ -23,7 +23,7 @@ const MobileNav = () => {
                 <Image src="/assets/icons/menu.svg" alt="Menu" width={24} height={24} />
             </SheetTrigger>
             <SheetContent className="flex flex-col gap-6 md:hidden bg-white">
-                <Image src="/assets/images/logo.svg" alt="Evently logo" width={128} height={38} />
+                <Image src="/assets/images/logo.svg" alt="NexEvent logo" width={128} height={38} />
                 <Separator />
                 <NavItems />
                 {status === 'authenticated' ? (

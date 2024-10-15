@@ -7,14 +7,9 @@ const Footer = () => {
     <footer className='border-t'>
       <div className='flex-center flex-between flex-col sm:flex-row text-center flex gap-4 p-5 wrapper'>
         <Link href='/'>
-          <Image 
-            src='/assets/images/logo.svg' 
-            alt='Evently logo' 
-            width={128} 
-            height={38}
-          />
+        <p className="h5-bold">NexEvent</p>
         </Link>
-        <p>2023 Evently. All rights reserved.</p>
+        <p>2024 NexEvent. All rights reserved.</p>
       </div>
     </footer>
   )

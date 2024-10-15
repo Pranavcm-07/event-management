@@ -25,8 +25,6 @@ export type User = {
 
   
   export type UpdateUserParams = {
-    firstName: string
-    lastName: string
     username: string
     photo: string
   }
@@ -105,8 +103,7 @@ export type User = {
     url: string
     organizer: {
       _id: string
-      firstName: string
-      lastName: string
+      username: string
     }
     category: {
       _id: string
@@ -129,7 +126,7 @@ export type User = {
   }
   
   export type CreateOrderParams = {
-    stripeId: string
+    razorpayId: string
     eventId: string
     buyerId: string
     totalAmount: string

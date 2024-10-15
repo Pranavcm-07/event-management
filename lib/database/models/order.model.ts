@@ -2,7 +2,7 @@ import { Schema, model, models, Document } from 'mongoose'
 
 export interface IOrder extends Document {
   createdAt: Date
-  stripeId: string
+  razorpayId: string
   totalAmount: string
   event: {
     _id: string
@@ -10,13 +10,13 @@ export interface IOrder extends Document {
   }
   buyer: {
     _id: string
-    firstName: string
-    lastName: string
+    username: string
   }
 }
 
 export type IOrderItem = {
   _id: string
+  isFree: boolean
   totalAmount: string
   createdAt: Date
   eventTitle: string
@@ -29,7 +29,7 @@ const OrderSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  stripeId: {
+  razorpayId: {
     type: String,
     required: true,
     unique: true,
